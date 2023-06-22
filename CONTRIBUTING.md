@@ -1,88 +1,145 @@
-# Contributing to Kuma's Website
+<!-- Synced from kumahq/.github update lifecycle action (and remove this comment) to stop syncing -->
+# Contributing Guide
 
-Hello, and welcome! Whether you are looking for help, trying to report a bug, thinking about getting involved in the project or about to submit a patch, this document is for you! Its intent is to be both an entry point for newcomers to the community (with various technical backgrounds), and a guide/reference for contributors and maintainers.
+* [New Contributor Guide](#contributing-guide)
+  * [Ways to Contribute](#ways-to-contribute)
+  * [Find an Issue](#find-an-issue)
+  * [Ask for Help](#ask-for-help)
+  * [Pull Request Lifecycle](#pull-request-lifecycle)
+  * [Development Environment Setup](#development-environment-setup)
+  * [Sign Your Commits](#sign-your-commits)
+  * [Pull Request Checklist](#pull-request-checklist)
 
-## Where to seek help?
+Welcome! We are glad that you want to contribute to Kuma! 💖
 
-[Slack](https://kuma-mesh.slack.com) is the main chat channel used by the community and the maintainers of this project. If you do not have an existing account, please follow this [link](https://join.slack.com/t/kuma-mesh/shared_invite/zt-1rcll3y6t-DkV_CAItZUoy0IvCwQ~jlQ) to sign up for free.
+As you get started, you are in the best position to give us feedback on areas of
+our project that we need help with including:
 
-**Please avoid opening GitHub issues for general questions or help**, as those should be reserved for actual bug reports. The Kuma community is welcoming and more than willing to assist you on Slack!
+* Problems found during setting up a new developer environment
+* Gaps in our Quickstart Guide or documentation
+* Bugs in our automation scripts
 
-## Where to report bugs?
+If anything doesn't make sense, or doesn't work when you run it, please open a
+bug report and let us know!
 
-Feel free to [submit an issue](https://github.com/kumahq/kuma-website/issues/new/choose) on the GitHub repository, we would be grateful to hear about it! Please provide a direct link to the webpage that contains the issue and make sure to respect the GitHub issue template, and include:
+## Ways to Contribute
 
-1. A summary of the issue
-2. A list of steps to reproduce the issue
+We welcome many types of contributions including:
 
-If you wish, you are more than welcome to propose a patch to fix the issue! See the [Submit a patch](#submitting-a-patch) section for more information on how to best do so.
+* New features
+* Builds, CI/CD
+* Bug fixes
+* Documentation
+* Issue Triage
+* Answering questions on Slack/Mailing List
+* Web design
+* Communications / Social Media / Blog Posts
+* Release management
 
-## Contributing
+Not everything happens through a GitHub pull request. Please check
+the [community page on kuma.io](https://kuma.io/community/). 
 
-We welcome contributions of all kinds, you do not need to code to be helpful! All of the following tasks are noble and worthy contributions that you can make without coding:
+### Come to meetings!
+Absolutely everyone is welcome to come to any of our meetings. You never need an
+invitation to join us. In fact, we want you to join us, even if you don’t have
+anything you feel like you want to contribute. Just being there is enough!
 
-- Reporting a bug (see the [report bugs](#where-to-report-bugs) section)
-- Helping other members of the community on Slack
-- Fixing a typo in the documentation
-- Providing your feedback on the proposed features and designs
-- Reviewing Pull Requests
+You can find out more about our meetings [here](https://kuma.io/community/).
+You don’t have to turn on your video.
+The first time you come, introducing yourself is more than enough.
+Over time, we hope that you feel comfortable voicing your opinions, giving
+feedback on others’ ideas, and even sharing your own ideas, and experiences.
 
-If you wish to contribute code (features or bug fixes), see the [Submitting a patch](#submitting-a-patch) section.
+## Find an Issue
 
-### Submitting a patch
+We have good first issues for new contributors and help wanted issues suitable
+for any contributor.
+[good first issue](https://github.com/search?q=org%3Akumahq+label%3A%22good+first+issue%22+state%3Aopen&type=Issues) has extra information to
+help you make your first contribution. [help wanted](https://github.com/search?q=org%3Akumahq+label%3A%22help+wanted%22+state%3Aopen&type=Issues) are issues
+suitable for someone who isn't a core maintainer and is good to move onto after
+your first pull request.
 
-Feel free to contribute fixes or minor features, we love to receive Pull Requests! If you are planning to develop a larger feature, come talk to us first on [Slack](#where-to-seek-for-help)!
+Sometimes there won’t be any issues with these labels. That’s ok! There is
+likely still something for you to work on. If you want to contribute but you
+don’t know where to start or can't find a suitable issue, you can ask in the #development channel in [the Kuma Slack](https://kuma-mesh.slack.com/).
 
-When contributing, please follow the guidelines provided in this document and [WRITING-DOCUMENTATION.md](WRITING-DOCUMENTATION.md). They will cover topics such as the different Git branches we use, the commit message format to use or the appropriate code style.
+Once you see an issue that you'd like to work on, please post a comment saying
+that you want to work on it. Something like "I want to work on this" is fine.
 
-Once you have read them, and you are ready to submit your Pull Request, be sure to verify a few things:
+You might want to familiarize yourself with our [Triage policy](https://github.com/kumahq/.github/blob/main/PROJECT_MANAGEMENT.md#triage).
 
-- We do trunk based development so the only valid branch to open a PR against is `master`.
-- Your commit history is clean: changes are atomic and the git message format was respected
-- Rebase your work on top of the base branch (seek help online on how to use `git rebase`; this is important to ensure your commit history is clean and linear)
+## Ask for Help
 
-If the above guidelines are respected, your Pull Request will be reviewed by a maintainer.
+The best way to reach us with a question when contributing is to ask on:
 
-If you are asked to update your patch by a reviewer, please do so! Remember: **you are responsible for pushing your patch forward**. If you contributed it, you are probably the one in need of it. You must be prepared to apply changes to it if necessary.
+* The original github issue
+* The developer mailing list
+* [Kuma Slack #developer](https://join.slack.com/t/kuma-mesh/shared_invite/zt-1rcll3y6t-DkV_CAItZUoy0IvCwQ~jlQ) 
 
-If your Pull Request was accepted and fixes a bug, adds functionality, or makes it significantly easier to use or understand Kuma's website, congratulations! You are now an official contributor to Kuma. Get in touch with us to receive your very own [Contributor T-shirt](#contributor-t-shirt)!
 
-#### Sign Your Work
+## Pull Request Lifecycle
 
-The sign-off is a simple line at the end of the explanation for a commit. All commits need to be signed. Your signature certifies that you wrote the patch or otherwise have the right to contribute the material. The rules are pretty simple, if you can certify the below (from [developercertificate.org](https://developercertificate.org/)):
+- Use freely Draft PRs but don't except anyone to review or look at it unless you explicitly mention them.
+- If you create a regular PR, reviewers will review it so only open PRs that are ready to review.
+- If no-one reviews your PR it's ok to ping folks in Slack after 2 business days.
+- The reviewer will leave feedback and follow these rules:
+  - nits: These are suggestions that you may decide incorporate into your pull request or not without further comment.
+  - It can help to put a 👍 on comments that you have implemented so that you can keep track.
+  - It is okay to clarify if you are being told to make a change or if it is a suggestion.
+- Make changes in new commits (Please don't force push to your PR it's easier to review). Please update your PRs it's ok to have merge commits we'll get rid of them when squashing.
+- Ask for a new review by dismissing existing reviews and/or mention the reviewer.
+- Please wait 2 business days before pinging the reviewer again.
+- When a pull request has been approved, the reviewer will squash and merge your commits. If you prefer to rebase your own commits, at any time leave a comment on the pull request to let them know that.
 
-To signify that you agree to the DCO for a commit, you add a line to the git commit message:
+## Development Environment Setup
 
-```txt
-Signed-off-by: Jane Smith <jane.smith@example.com>
-```
+See [the dedicated page](./DEVELOPER.md).
 
-In most cases, you can add this signoff to your commit automatically with the `-s` flag to `git commit`. You must use your real name and a reachable email address (sorry, no pseudonyms or anonymous contributions).
+## Sign Your Commits
 
-### Running the site locally
+### DCO
+Licensing is important to open source projects. It provides some assurances that
+the software will continue to be available based under the terms that the
+author(s) desired. We require that contributors sign off on commits submitted to
+our project's repositories. The [Developer Certificate of Origin
+(DCO)](https://developercertificate.org/) is a way to certify that you wrote and
+have the right to contribute the code you are submitting to the project.
 
-Clone the repository and run `make install`, make sure you have the right ruby version installed (`cat .ruby-version`).
-Jekyll is a static-site generator, so first we need to build the site and compile the assets:
-```
-make build
-```
-Note: If you face any issues, e.g. the asset don't look right, try cleaning the cache first and re-build the site:
-```
-make clean && make build
-```
+You sign-off by adding the following to your commit messages. Your sign-off must
+match the git user and email associated with the commit.
 
-Next, run
-```
-make serve
-```
-which will run `Netlify` locally in a local dev server, similar to production, making all the redirects, env variables, etc.
-available. You can visit http://localhost:8888/ and start reading the documentation.
+    This is my commit message
 
-#### Modifying files locally
+    Signed-off-by: Your Name <your.name@example.com>
 
-If you want to make changes to the docs or the assets and see them reflected on the browser, you need to run the site with:
-```
-make run
-```
-This will run `jekyll serve` and `vite` in the background wich wil re-build the corresponding pages whenever a doc or asset changes,
-while running `netlify dev` so that all the redirects work locally.
+Git has a `-s` command line option to do this automatically:
+
+    git commit -s -m 'This is my commit message'
+
+If you forgot to do this and have not yet pushed your changes to the remote
+repository, you can amend your commit with the sign-off by running 
+
+    git commit --amend -s 
+
+
+## Pull Request Checklist
+
+When you submit your pull request, or you push new commits to it, our automated
+systems will run some checks on your new code. We require that your pull request
+passes these checks, but we also have more criteria than just that before we can
+accept and merge it. We recommend that you check the following things locally
+before you submit your code:
+
+**TODO**
+<!-- list both the automated and any manual checks performed by reviewers, it
+is very helpful when the validations are automated in a script for example in a
+Makefile target. Below is an example of a checklist:
+
+* It passes tests: run the following command to run all of the tests locally:
+  `make build test lint`
+* Impacted code has new or updated tests
+* Documentation created/updated
+* We use [Azure DevOps, GitHub Actions, CircleCI]  to test all pull
+  requests. We require that all tests succeed on a pull request before it is merged.
+
+-->
