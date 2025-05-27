@@ -20,8 +20,8 @@ module Jekyll
             has_path([])
           end
 
-          def kind_is(kind)
-            ->(_, node, _) { node['kind'] == kind }
+          def kind_is(*kinds)
+            ->(_, node, _) { kinds.include?(node['kind']) }
           end
 
           def _and(*conditions)
@@ -51,18 +51,18 @@ module Jekyll
             @callbacks = []
 
             register_callback(
-              _and(has_path(%w[spec to targetRef]), kind_is("MeshService")),
+              _and(has_path(%w[spec to targetRef]), kind_is("MeshService", "MeshMultiZoneService")),
               lambda do |target_ref, context|
                 case context[:env]
                 when :kubernetes
                   if context[:legacy_output]
                     {
-                      "kind" => "MeshService",
+                      "kind" => target_ref['kind'],
                       "name" => [target_ref['name'], target_ref['namespace'], "svc", target_ref['_port']].compact.join('_')
                     }
                   else
                     {
-                      "kind" => "MeshService",
+                      "kind" => target_ref['kind'],
                       "name" => target_ref['name'],
                       "namespace" => target_ref['namespace'],
                       "sectionName" => target_ref['sectionName']
@@ -71,12 +71,12 @@ module Jekyll
                 when :universal
                   if context[:legacy_output]
                     {
-                      "kind" => "MeshService",
+                      "kind" => target_ref['kind'],
                       "name" => target_ref['name']
                     }
                   else
                     {
-                      "kind" => "MeshService",
+                      "kind" => target_ref['kind'],
                       "name" => target_ref['name'],
                       "sectionName" => target_ref['sectionName']
                     }
@@ -85,13 +85,13 @@ module Jekyll
               end)
 
             register_callback(
-              _or(_and(has_path(%w[spec to rules default backendRefs]), kind_is("MeshService")), _and(has_path(%w[spec to rules default filters requestMirror backendRef]), kind_is("MeshService"))),
+              _or(_and(has_path(%w[spec to rules default backendRefs]), kind_is("MeshService", "MeshMultiZoneService")), _and(has_path(%w[spec to rules default filters requestMirror backendRef]), kind_is("MeshService", "MeshMultiZoneService"))),
               lambda do |backend_ref, context|
                 case context[:env]
                 when :kubernetes
                   if context[:legacy_output]
                     {
-                      "kind" => "MeshService",
+                      "kind" => backend_ref['kind'],
                       "name" => [backend_ref['name'], backend_ref['namespace'], "svc", backend_ref['port']].compact.join('_'),
                     }.tap { |hash|
                       hash["kind"] = "MeshServiceSubset" if backend_ref.key?('_version')
@@ -102,7 +102,7 @@ module Jekyll
                     }
                   else
                     {
-                      "kind" => "MeshService",
+                      "kind" => backend_ref['kind'],
                       "name" => backend_ref['name'],
                       "namespace" => backend_ref['namespace'],
                       "port" => backend_ref['port'],
@@ -114,7 +114,7 @@ module Jekyll
                 when :universal
                   if context[:legacy_output]
                     {
-                      "kind" => "MeshService",
+                      "kind" => backend_ref['kind'],
                       "name" => backend_ref['name'],
                     }.tap { |hash|
                       hash["kind"] = "MeshServiceSubset" if backend_ref.key?('_version')
@@ -125,7 +125,7 @@ module Jekyll
                     }
                   else
                     {
-                      "kind" => "MeshService",
+                      "kind" => backend_ref['kind'],
                       "name" => backend_ref['name'],
                       "port" => backend_ref['port'],
                     }.tap { |hash|

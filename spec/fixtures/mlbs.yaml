@@ -1,0 +1,25 @@
+type: MeshLoadBalancingStrategy
+name: cross-zone-backend
+mesh: default
+spec:
+  to:
+    - targetRef:
+        kind: MeshMultiZoneService
+        name: backend
+        namespace: kuma-demo
+        sectionName: http
+        _port: 8080
+      default:
+        localityAwareness:
+          crossZone:
+            failover:
+              - to:
+                  type: Only
+                  zones: ["us-1"]
+              - to:
+                  type: AnyExcept
+                  zones: ["us-2", "us-3"]
+              - to:
+                  type: Any
+            failoverThreshold:
+              percentage: 25

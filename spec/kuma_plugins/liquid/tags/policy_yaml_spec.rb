@@ -22,6 +22,15 @@ RSpec.describe Jekyll::KumaPlugins::Liquid::Tags::PolicyYaml do
         tag_options: 'use_meshservice=true'
       },
       {
+        input_file: 'spec/fixtures/mlbs.yaml',
+        golden_file: 'spec/fixtures/mlbs-use-ms.golden.html',
+        tag_options: 'use_meshservice=true'
+      },
+      {
+        input_file: 'spec/fixtures/mlbs.yaml',
+        golden_file: 'spec/fixtures/mlbs.golden.html',
+      },
+      {
         input_file: 'spec/fixtures/mhr-and-mtr.yaml',
         golden_file: 'spec/fixtures/mhr-and-mtr.golden.html',
         tag_options: 'use_meshservice=true'
