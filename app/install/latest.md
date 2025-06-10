@@ -9,4 +9,11 @@ cta:
   - label: Get Started on Universal
     logo: "/assets/images/platforms/logo-linux.png"
     slug: /quickstart/universal-docker-demo
+cta_2110:
+  - label: Get Started with Kubernetes
+    logo: "/assets/images/platforms/logo-kubernetes.png"
+    slug: /quickstart/kubernetes-demo-kv
+  - label: Get Started on Universal
+    logo: "/assets/images/platforms/logo-linux.png"
+    slug: /quickstart/universal-docker-demo
 ---
